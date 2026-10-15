@@ -110,12 +110,21 @@
       color: #526078;
     }
 
-    .skills,
-    .projects {
+    /* Skills layout */
+    .skills {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
       gap: 18px;
       margin-top: 24px;
+    }
+
+    /* Projects layout: two cards above, third centered below */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+      align-items: stretch;
     }
 
     .skill,
@@ -128,6 +137,45 @@
       min-width: 0;
     }
 
+    /* Equal-height project cards */
+    .project {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* Consistent screenshot dimensions */
+    .project-image,
+    .project-image-placeholder {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    /* Placeholder until the third screenshot is available */
+    .project-image-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: #eef3fb;
+      color: #526078;
+      text-align: center;
+      border: 1px dashed #bdcbe0;
+      object-fit: contain;
+    }
+
+    /* Center the third project card */
+    .project:nth-child(3) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - 12px);
+    }
+
     .skill h3,
     .project h3 {
       margin-bottom: 10px;
@@ -137,18 +185,6 @@
     .project p {
       color: #526078;
       font-size: 15px;
-    }
-
-    .project a {
-      display: inline-block;
-      margin-top: 15px;
-      color: #2365cc;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .project a:hover {
-      text-decoration: underline;
     }
 
     .tags {
@@ -163,6 +199,21 @@
       padding: 4px 9px;
       margin: 4px 3px 0 0;
       font-size: 12px;
+    }
+
+    /* Keep project links aligned at the bottom */
+    .project > a {
+      display: inline-block;
+      margin-top: auto;
+      padding-top: 16px;
+      color: #2365cc;
+      font-weight: bold;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+
+    .project > a:hover {
+      text-decoration: underline;
     }
 
     #contact {
@@ -180,6 +231,23 @@
       text-align: center;
       padding: 22px;
       font-size: 14px;
+    }
+
+    /* Mobile and tablet layout */
+    @media (max-width: 700px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .project:nth-child(3) {
+        grid-column: auto;
+        width: 100%;
+      }
+
+      .project-image,
+      .project-image-placeholder {
+        height: 200px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -214,6 +282,7 @@
 
   <main>
 
+    <!-- Hero section -->
     <div class="hero">
       <p class="tag">COMPUTER SCIENCE AND ENGINEERING GRADUATE</p>
 
@@ -233,6 +302,7 @@
       <a class="btn secondary" href="#contact">Contact Me</a>
     </div>
 
+    <!-- About section -->
     <section id="about">
       <h2>About Me</h2>
 
@@ -253,6 +323,7 @@
       </p>
     </section>
 
+    <!-- Skills section -->
     <section id="skills">
       <h2>Technical Skills</h2>
 
@@ -295,6 +366,7 @@
       </div>
     </section>
 
+    <!-- Projects section -->
     <section id="projects">
       <h2>My Projects</h2>
 
@@ -304,7 +376,14 @@
 
       <div class="projects">
 
+        <!-- Project 1 -->
         <div class="project">
+          <img
+            src="Face recognition.png"
+            alt="AI-Based Facial Recognition project screenshot"
+            class="project-image"
+          >
+
           <h3>AI-Based Facial Recognition for Smart Access Control and Identity Validation</h3>
 
           <p>
@@ -331,9 +410,13 @@
           </a>
         </div>
 
+        <!-- Project 2 -->
         <div class="project">
-          
-          <img src="Home.png" alt="Project screenshot" class="project-image">
+          <img
+            src="Home.png"
+            alt="Data Visualization and Model Prediction project screenshot"
+            class="project-image"
+          >
 
           <h3>Data Visualization and Model Prediction for Analytical Data Using Python</h3>
 
@@ -360,33 +443,43 @@
           </a>
         </div>
 
-        <div class="project">
-          <h3>Personalized Sound Spectrum</h3>
+        
+<!-- Project 3 -->
+<div class="project">
+  <img
+    src="MUsicimage.png"
+    alt="Personalized Sound Spectrum project screenshot"
+    class="project-image"
+  >
 
-          <p>
-            Developed a project to analyze sound and represent audio
-            signals through visual spectrum patterns. The project
-            focuses on displaying sound frequencies visually to help
-            users understand audio characteristics more easily.
-          </p>
+  <h3>Personalized Sound Spectrum</h3>
 
-          <div class="tags">
-            <span>Python</span>
-            <span>Audio Processing</span>
-            <span>Data Visualization</span>
-          </div>
+  <p>
+    Developed a project to analyze sound and represent audio
+    signals through visual spectrum patterns. The project
+    focuses on displaying sound frequencies visually to help
+    users understand audio characteristics more easily.
+  </p>
 
-          <a
-            href="https://github.com/rupa-17/Personalized-Sound-Spectrum"
-            target="_blank"
-            rel="noopener noreferrer">
-            View Project on GitHub →
-          </a>
-        </div>
+  <div class="tags">
+    <span>Python</span>
+    <span>Audio Processing</span>
+    <span>Data Visualization</span>
+  </div>
+
+  <a
+    href="https://github.com/rupa-17/Personalized-Sound-Spectrum"
+    target="_blank"
+    rel="noopener noreferrer">
+    View Project on GitHub →
+  </a>
+</div>
+
 
       </div>
     </section>
 
+    <!-- Resume section -->
     <section id="Resume">
       <h2>My Resume</h2>
 
@@ -401,6 +494,7 @@
       </a>
     </section>
 
+    <!-- Contact section -->
     <section id="contact">
       <h2>Contact Me</h2>
 
